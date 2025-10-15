@@ -2,24 +2,23 @@
 export default {
   data() {
     return {
-      num: 0,
+      kValue: "",
     };
   },
   methods: {
-    increment() {
-      this.num++;
-    },
-    decrement() {
-      this.num--;
+    getKey(e) {
+      // this.kValue = e.key;
+      alert("alt - s 를 누르셨네요");
     },
   },
 };
 </script>
 
 <template>
-  <p>{{ num }}</p>
-  <button v-on:click="increment">Increase number</button>
-  <button v-on:click="decrement">Decrease number</button>
+  <input type="text" v-on:keydown.alt.s="getKey" /><br />
+  <span>{{ kValue }}</span>
 </template>
 
 <style></style>
+
+.enter .tab .delete .esc .space .up .down .left .right .center
