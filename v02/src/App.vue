@@ -2,42 +2,44 @@
 export default {
   data() {
     return {
-      x: 0,
-      y: 0,
-      msg: "",
+      itemName: null,
+      itemCnt: 1,
+      sList: [{ name: "감귤", cnt: 2 }],
     };
   },
   methods: {
-    mousePos(e) {
-      this.x = e.offsetX;
-      this.y = e.offsetY;
-    },
-    mouseClick(e) {
-      this.msg += this.x + "," + this.y + "\n";
+    addItem() {
+      let item = {
+        name: this.itemName,
+        cnt: this.itemCnt,
+      };
+      this.sList.push(item);
+      this.itemName = null;
+      this.tiemCnt = 1;
     },
   },
 };
 </script>
 
 <template>
-  <div
-    id="display"
-    v-on:mousemove="mousePos"
-    v-on:click.right.prevent="mouseClick"
-  >
-    x: {{ x }}<br />
-    y: {{ y }}
-  </div>
-  <textarea>{{ msg }}</textarea>
+  <form v-on:submit.prevent="addItem">
+    <p>품목: <input type="text" required v-model="itemName" /></p>
+    <p>
+      수량 :
+      <select v-model="itemCnt">
+        <option value="1">1개</option>
+        <option value="2">2개</option>
+        <option value="3">3개</option>
+        <option value="4">4개</option>
+        <option value="5">5개</option>
+      </select>
+    </p>
+    <button type="submit">상품추가</button>
+  </form>
+  <p>구입할 품목 :</p>
+  <ul>
+    <li v-for="item in sList">{{ item.name }} ({{ item.cnt }}개)</li>
+  </ul>
 </template>
 
-<style>
-#display {
-  width: 200px;
-  height: 200px;
-  background-color: goldenrod;
-}
-textarea {
-  height: 500px;
-}
-</style>
+<style></style>
