@@ -2,17 +2,24 @@
 export default {
   data() {
     return {
-      count: 0,
+      num: 0,
     };
+  },
+  methods: {
+    increment() {
+      this.num++;
+    },
+    decrement() {
+      this.num--;
+    },
   },
 };
 </script>
 
 <template>
-  <p>{{ "count : " + count }}</p>
-  <button v-on:click="count++">숫자 증가</button>
-  <button v-on:click="count--">숫자 감소</button>
-  <button v-on:mouseover="count = 0">0으로 초기화</button>
+  <p>{{ num }}</p>
+  <button v-on:click="increment">Increase number</button>
+  <button v-on:click="decrement">Decrease number</button>
 </template>
 
 <style></style>
