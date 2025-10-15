@@ -2,23 +2,42 @@
 export default {
   data() {
     return {
-      kValue: "",
+      x: 0,
+      y: 0,
+      msg: "",
     };
   },
   methods: {
-    getKey(e) {
-      // this.kValue = e.key;
-      alert("alt - s 를 누르셨네요");
+    mousePos(e) {
+      this.x = e.offsetX;
+      this.y = e.offsetY;
+    },
+    mouseClick(e) {
+      this.msg += this.x + "," + this.y + "\n";
     },
   },
 };
 </script>
 
 <template>
-  <input type="text" v-on:keydown.alt.s="getKey" /><br />
-  <span>{{ kValue }}</span>
+  <div
+    id="display"
+    v-on:mousemove="mousePos"
+    v-on:click.right.prevent="mouseClick"
+  >
+    x: {{ x }}<br />
+    y: {{ y }}
+  </div>
+  <textarea>{{ msg }}</textarea>
 </template>
 
-<style></style>
-
-.enter .tab .delete .esc .space .up .down .left .right .center
+<style>
+#display {
+  width: 200px;
+  height: 200px;
+  background-color: goldenrod;
+}
+textarea {
+  height: 500px;
+}
+</style>
