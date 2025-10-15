@@ -2,44 +2,24 @@
 export default {
   data() {
     return {
-      itemName: null,
-      itemCnt: 1,
-      sList: [{ name: "감귤", cnt: 2 }],
+      site_name: "Daum",
+      url: "https://daum.net",
+      src: "https://i.namu.wiki/i/xxyTLDbYnN4uGEFNR-VpNVMa-iK5c5-zvzd4VOoBOuMBfzhqx1K8mcToaQ7K17D7OoqypoJolu3uAKURgooBOQ.webp",
     };
   },
   methods: {
-    addItem() {
-      let item = {
-        name: this.itemName,
-        cnt: this.itemCnt,
-      };
-      this.sList.push(item);
-      this.itemName = null;
-      this.tiemCnt = 1;
+    clickAr: function () {
+      this.site_name = "Naver";
+      this.url = "https://naver.com";
     },
   },
 };
 </script>
 
 <template>
-  <form v-on:submit.prevent="addItem">
-    <p>품목: <input type="text" required v-model="itemName" /></p>
-    <p>
-      수량 :
-      <select v-model="itemCnt">
-        <option value="1">1개</option>
-        <option value="2">2개</option>
-        <option value="3">3개</option>
-        <option value="4">4개</option>
-        <option value="5">5개</option>
-      </select>
-    </p>
-    <button type="submit">상품추가</button>
-  </form>
-  <p>구입할 품목 :</p>
-  <ul>
-    <li v-for="item in sList">{{ item.name }} ({{ item.cnt }}개)</li>
-  </ul>
+  <a :href="url">{{ site_name }}</a>
+  <img :src="src" />
+  <button @click="clickAr">버튼</button>
 </template>
 
 <style></style>
