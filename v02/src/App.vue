@@ -2,33 +2,23 @@
 export default {
   data() {
     return {
-      myWidth: 10,
+      chk: false,
     };
   },
-  methods: {
-    incWidth: function () {
-      this.myWidth += 10;
-    },
-    initWidth: function () {
-      this.myWidth = 10;
+  computed: {
+    yesNo() {
+      if (this.chk) {
+        return "예";
+      } else {
+        return "아니오";
+      }
     },
   },
 };
 </script>
 
 <template>
-  <div
-    class="demo"
-    @mouseover="initWidth"
-    v-bind:style="{ width: myWidth + 'px' }"
-  ></div>
-  <button @click="incWidth">버튼을 클릭해보세요.</button>
+  <input type="checkbox" v-model="chk" />{{ yesNo }} {{ yesNo }} {{ yesNo }}
 </template>
 
-<style>
-.demo {
-  width: 100px;
-  height: 100px;
-  background-color: blueviolet;
-}
-</style>
+<style></style>
