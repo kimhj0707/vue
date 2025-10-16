@@ -2,23 +2,35 @@
 export default {
   data() {
     return {
-      chk: false,
+      count: 0,
+      y: "짝수",
     };
   },
-  computed: {
-    yesNo() {
-      if (this.chk) {
-        return "예";
-      } else {
-        return "아니오";
-      }
+  methods: {
+    increment() {
+      this.count++;
+    },
+  },
+  watch: {
+    count: {
+      handler(newVal, oldVal) {
+        console.log(`Count changed from ${oldVal} to ${newVal}`);
+        if (newVal % 2 === 0) {
+          this.y = "짝수";
+        } else {
+          this.y = "홀수";
+        }
+      },
+      once: false,
     },
   },
 };
 </script>
 
 <template>
-  <input type="checkbox" v-model="chk" />{{ yesNo }} {{ yesNo }} {{ yesNo }}
+  <div>
+    <p>count : {{ count }}</p>
+    <button @click="increment">Increment</button>
+    <p>Result : {{ y }}</p>
+  </div>
 </template>
-
-<style></style>
