@@ -11,8 +11,8 @@
       <h1>Footer</h1>
     </template>
   </MainLayout>
-  <FancyButton>
-    <strong>클릭3</strong>
+  <FancyButton v-slot="{ buttonname }">
+    {{ buttonname }}
   </FancyButton>
 </template>
 
